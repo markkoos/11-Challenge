@@ -1,7 +1,6 @@
 const express = require(`express`);
 const path = require(`path`);
-const api = require(`./public`)
-
+const api = require(`./routes/index`)
 
 const PORT = process.env.PORT || 3001;
 
@@ -10,8 +9,9 @@ const app = express();
 // Middleware that parses JSON and urlencoded form data
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-app.use()
+app.use(`/api`, api)
 
+// creates static file path for express
 app.use(express.static(`public`));
 
 // GET Route for homepage
